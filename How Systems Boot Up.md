@@ -1,6 +1,6 @@
 ## Concept of Booting
 
-<img src ="src/Booting.jpg" width =50%/>
+<img src ="src/Booting.jpg"/>
 
 ### What is Booting?
 Booting is the process of starting a computer and loading the operating system (OS) into the main memory so that the computer becomes ready to execute user commands. When a computer is first powered on, the CPU has no instructions in memory, so it needs to load the OS to initiate functionality.
