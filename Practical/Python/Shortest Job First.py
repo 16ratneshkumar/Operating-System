@@ -1,4 +1,4 @@
-# First Come First Serve Scheduling Algorithm (FCFS)
+# Shortest Job First Scheduling Algorithm (SJF)
 
 
 def First_Come_First_Serve(name_of_process, burst_time, number_of_processes):
@@ -19,6 +19,14 @@ def First_Come_First_Serve(name_of_process, burst_time, number_of_processes):
         waiting_time += burst_time[i]
     print(f"\nAverage Waiting Time is:: {total_waiting_time / number_of_processes}\nAverage TurnAround Time is:: {total_turnaround_time / number_of_processes}")
 
+def Sort(name_of_process, burst_time, number_of_processes):
+    for i in range(number_of_processes):
+        for j in range(number_of_processes):
+            if burst_time[i] < burst_time[j]:
+                burst_time[i],burst_time[j]=burst_time[j],burst_time[i]
+                name_of_process[i],name_of_process[j]=name_of_process[j],name_of_process[i]
+    First_Come_First_Serve(name_of_process, burst_time, number_of_processes)
+    
 
 def main():
     name_of_process = []
@@ -30,7 +38,8 @@ def main():
         name_of_process.append(input(f"Enter name of process {i + 1}: "))
         burst_time.append(int(input(f"Enter burst time for process {name_of_process[i]}: ")))
 
-    First_Come_First_Serve(name_of_process, burst_time, number_of_processes)
+    Sort(name_of_process, burst_time, number_of_processes)
+
 
 
 if __name__ == "__main__":
