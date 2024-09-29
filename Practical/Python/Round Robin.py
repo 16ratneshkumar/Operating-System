@@ -1,17 +1,15 @@
 def display(name_of_process, burst_time, number_of_processes,waiting_time,turnaround_time):
-    total_waiting_time = 0
-    total_turnaround_time = 0
+    total_waiting_time = sum(waiting_time)
+    total_turnaround_time = sum(turnaround_time)
     print("Name Of Process\tBurst Time\tWaiting Time\tTurnAround Time")
     for num in range(number_of_processes):
-        total_waiting_time += waiting_time[num]
-        total_turnaround_time += turnaround_time[num]
         print(f"{name_of_process[num]}\t\t{burst_time[num]}\t\t{waiting_time[num]}\t\t{turnaround_time[num]}")
     print(f"\nAverage Waiting Time is:: {total_waiting_time / number_of_processes}\nAverage TurnAround Time is:: {total_turnaround_time / number_of_processes}")
     
 
 def Round_Robin(name_of_process, burst_time, number_of_processes):
-    waiting_time = ["0"] * number_of_processes
-    turnaround_time = ["0"] * number_of_processes
+    waiting_time = [0] * number_of_processes
+    turnaround_time = [0] * number_of_processes
     remaining_time = burst_time.copy()
     clock = 0
     time_quantum = int(input("Enter Time Quantum:: "))

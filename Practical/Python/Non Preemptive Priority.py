@@ -1,4 +1,4 @@
-# Write a program to implement non-preemptive priority-based scheduling algorithm
+# Non-Preemptive Priority-Based Scheduling Algorithm
 
 
 def First_Come_First_Serve(name_of_process, burst_time, priority, number_of_processes):
