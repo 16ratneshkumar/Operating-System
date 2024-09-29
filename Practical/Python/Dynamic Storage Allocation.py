@@ -4,6 +4,7 @@ def flag(No_of_Frames,memory):
     for Frame in range(No_of_Frames):
         if memory[Frame][0] == "free":
             return Frame
+    print("\nYou Have Not Enough Space To Run New Process") 
         
 
 def Display(memory):
