@@ -1,17 +1,11 @@
 # 13. Write a program to implement first-fit, best-fit and worst-fit allocation strategies.
-
-def flag(No_of_Frames,memory):
-    for Frame in range(No_of_Frames):
-        if memory[Frame][0] == "free":
-            return Frame
-    print("\nYou Have Not Enough Space To Run New Process") 
-        
-
+      
 def Display(memory):
-    for frames in memory:
-        print(frames)
-    print()
-
+    count=1
+    print("Memory Status:")
+    for (state, size) in memory :
+        print(f"Frame:{count} | Process:{state} | Size: {size}")
+        count+=1
 
 def First_Fit(No_of_Frames,memory,process):
     Flag = False
@@ -24,32 +18,36 @@ def First_Fit(No_of_Frames,memory,process):
     if not Flag:
         print("\nYou Have Not Enough Space To Run New Process")
 
-
 def Best_Fit(No_of_Frames,memory,process):
-    Flag = flag(No_of_Frames,memory)
+    Flag = None
     for frames in range(1,No_of_Frames):
         if memory[frames][0] == "free" and memory[frames][1]>= process[1] and memory[frames][1] < memory[Flag][1]:
-            Flag = frames
-    
-    if memory[Flag][1]>= process[1]:
+            if flag is not None:
+                if memory[Flag][1]>= process[1]:
+                    Flag = frames
+            else:
+                flag =frames
+    if Flag is not None:
         memory[Flag][0] = process[0]
         Display(memory)
     else:
         print("\nYou Have Not Enough Space To Run New Process")
         
-
 def Worst_Fit(No_of_Frames,memory,process):
-    Flag = flag(No_of_Frames,memory)
+    Flag = None
     for frames in range(1,No_of_Frames):
         if memory[frames][0] == "free" and memory[frames][1]>= process[1] and memory[frames][1] > memory[Flag][1]:
-            Flag = frames
+            if flag is not None:
+                if memory[Flag][1]>= process[1]:
+                    Flag = frames
+            else:
+                flag =frames
 
-    if memory[Flag][1]>= process[1]:
+    if Flag is not None:
         memory[Flag][0] = process[0]
         Display(memory)
     else:
         print("\nYou Have Not Enough Space To Run New Process")
-
 
 def main():
     No_of_Frames = int(input("Enter Your Number Of Frames :: "))
@@ -57,7 +55,7 @@ def main():
     Ready_process = []
     for i in range(No_of_Frames):
         print(f"\n____Enter Detail of {i+1} Frame of Memory____")
-        Running_process = input("Enter Process Name(If no Process is Running Enter 'free') :: ").lower()
+        Running_process = input("Enter Memory Status (Free or used) :: ").lower()
         Size_of_Frame = int(input("Enter Size Of Frame(in Kb) :: "))
         memory.append([Running_process,Size_of_Frame])
     print("\n____Enter Detail of New Process____")
@@ -74,6 +72,5 @@ def main():
     else:
         print("Wrong Input!")
 
-
 if __name__ == "__main__":
-    main()
+    main()    
