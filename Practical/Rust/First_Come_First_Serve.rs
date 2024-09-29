@@ -24,7 +24,7 @@ fn main(){
     let mut processes_count = String::new();
     println!("Enter the number of processes: ");
     io::stdin().read_line(&mut processes_count).expect("Failed to read line");
-    let number_of_processes: usize = processes_count.trim().parse().expect("Please enter a number");
+    let number_of_processes: usize = processes_count.trim().parse().expect("Please enter number of process:: ");
 
     let mut name_of_process =Vec::new();
     let mut burst_time = Vec::new();
@@ -39,12 +39,12 @@ fn main(){
 
         println!("Enter burst time for process {}: ", name_of_process[i]);
         io::stdin().read_line(&mut burst).expect("Failed to read line");
-        let burst_value: i32 = burst.trim().parse().expect("Please enter a number");
+        let burst_value: i32 = burst.trim().parse().expect("Please enter burst timeof processes:: ");
         burst_time.push(burst_value);
     }
 
     // let number_of_processes:usize =5;
-    // let name_of_process = vec!["P1","P2","P3","P4","P5"];
+    // let name_of_process = vec!["P1".to_string(),"P2".to_string(),"P3".to_string(),"P4".to_string(),"P5".to_string()];
     // let burst_time = vec![6,3,2,8,9];
 
     first_come_first_serve(name_of_process,burst_time,number_of_processes);

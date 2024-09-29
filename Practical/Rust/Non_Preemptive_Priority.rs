@@ -36,7 +36,7 @@ fn main(){
     let mut processes_count = String::new();
     println!("Enter the number of processes: ");
     io::stdin().read_line(&mut processes_count).expect("Failed to read line");
-    let number_of_processes: usize = processes_count.trim().parse().expect("Please enter a number");
+    let number_of_processes: usize = processes_count.trim().parse().expect("Please enter a number of processes:: ");
 
     let mut name_of_process =Vec::new();
     let mut burst_time = Vec::new();
@@ -53,12 +53,12 @@ fn main(){
 
         println!("Enter burst time for process {}: ", name_of_process[i]);
         io::stdin().read_line(&mut burst).expect("Failed to read line");
-        let burst_value: i32 = burst.trim().parse().expect("Please enter a number");
+        let burst_value: i32 = burst.trim().parse().expect("Please enter burst time of processes:: ");
         burst_time.push(burst_value);
 
         println!("Enter priority of process {}: ", name_of_process[i]);
         io::stdin().read_line(&mut priority).expect("Failed to read line");
-        let priority_value: i32 = priority.trim().parse().expect("Please enter a number");
+        let priority_value: i32 = priority.trim().parse().expect("Please priority of process:: ");
         priority_list.push(priority_value);
     }
 
